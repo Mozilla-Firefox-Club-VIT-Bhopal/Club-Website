@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand-purple: #ff7139;
+  --color-brand-cyan: #ffb800;
+  --color-brand-red: #e66000;
+  --color-brand-purple: #8a37f5;
+  --color-brand-indigo: #20123a;
+  --font-sans: var(--font-space-grotesk);
+}
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #000000;
+    --foreground: #ffffff;
+  }
+}
+
+html {
+  /* Static background removed – handled dynamically by BackgroundSwitcher component */
+  background-color: #000000;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+body {
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  background: transparent !important;
+  overflow-x: hidden;
+}
+
+/* Hide scrollbar completely but keep functionality */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Background image utility classes */
+@utility bg-fixed {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+@utility bg-hero {
+  background-image: url('/Background.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Utilities for animations and glassmorphism */
+@utility glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@utility glass-dark {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@utility text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, var(--color-brand-purple), var(--color-brand-cyan));
+}
