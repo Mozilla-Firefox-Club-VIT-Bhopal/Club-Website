@@ -2,6 +2,7 @@
 
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { TEAM_MEMBERS_PREVIEW } from "@/constants/data";
@@ -37,10 +38,20 @@ export default function TeamGalleryPreview() {
                                     <motion.div 
                                         key={member.name}
                                         whileHover={{ y: -8, scale: 1.1 }}
-                                        className={`w-16 h-16 rounded-full bg-gradient-to-br ${member.gradient} flex items-center justify-center text-sm font-black text-white border-4 border-black shadow-xl`}
+                                        className={`relative w-16 h-16 rounded-full bg-gradient-to-br ${member.gradient} flex items-center justify-center text-sm font-black text-white border-4 border-black shadow-xl overflow-hidden`}
                                         title={`${member.name} — ${member.role}`}
                                     >
-                                        {member.initials}
+                                        {"image" in member && member.image ? (
+                                            <Image
+                                                src={member.image}
+                                                alt={member.name}
+                                                fill
+                                                sizes="64px"
+                                                className="object-cover object-center"
+                                            />
+                                        ) : (
+                                            member.initials
+                                        )}
                                     </motion.div>
                                 ))}
                                 <div className="w-16 h-16 rounded-full bg-gray-900 flex items-center justify-center text-sm font-bold text-gray-400 border-4 border-black">
