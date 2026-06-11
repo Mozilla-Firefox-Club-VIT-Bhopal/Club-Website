@@ -3,24 +3,54 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { Github, Linkedin, Twitter, ArrowRight, Crown, Cpu, Settings2 } from "lucide-react";
+import { Github, Linkedin, Twitter, ArrowRight, Flag, Cpu, Settings2, Megaphone, Palette, BadgeDollarSign, FileText, Users } from "lucide-react";
 import { TEAM_DATA } from "@/constants/data";
 
 const CATEGORY_META: Record<string, { icon: React.ReactNode; borderColor: string; badgeClass: string }> = {
     Leadership: {
-        icon: <Crown size={13} />,
+        icon: <Flag size={13} />,
         borderColor: "hover:border-brand-purple/50",
         badgeClass: "border-brand-purple/30 text-brand-purple bg-brand-purple/5",
     },
-    Technical: {
+    "Technical Team": {
         icon: <Cpu size={13} />,
         borderColor: "hover:border-brand-cyan/50",
         badgeClass: "border-brand-cyan/30 text-brand-cyan bg-brand-cyan/5",
     },
-    Operations: {
+    "Event Management Team": {
         icon: <Settings2 size={13} />,
         borderColor: "hover:border-brand-purple/50",
         badgeClass: "border-brand-purple/30 text-brand-purple bg-brand-purple/5",
+    },
+    "Social Media Team": {
+        icon: <Megaphone size={13} />,
+        borderColor: "hover:border-brand-cyan/50",
+        badgeClass: "border-brand-cyan/30 text-brand-cyan bg-brand-cyan/5",
+    },
+    "Finance Team": {
+        icon: <BadgeDollarSign size={13} />,
+        borderColor: "hover:border-brand-purple/50",
+        badgeClass: "border-brand-purple/30 text-brand-purple bg-brand-purple/5",
+    },
+    "Creative Team": {
+        icon: <Palette size={13} />,
+        borderColor: "hover:border-brand-cyan/50",
+        badgeClass: "border-brand-cyan/30 text-brand-cyan bg-brand-cyan/5",
+    },
+    "Content & Editorial Team": {
+        icon: <FileText size={13} />,
+        borderColor: "hover:border-brand-purple/50",
+        badgeClass: "border-brand-purple/30 text-brand-purple bg-brand-purple/5",
+    },
+    "PR Team": {
+        icon: <Megaphone size={13} />,
+        borderColor: "hover:border-brand-purple/50",
+        badgeClass: "border-brand-purple/30 text-brand-purple bg-brand-purple/5",
+    },
+    Member: {
+        icon: <Users size={13} />,
+        borderColor: "hover:border-brand-cyan/50",
+        badgeClass: "border-brand-cyan/30 text-brand-cyan bg-brand-cyan/5",
     },
 };
 
@@ -119,8 +149,8 @@ export default function TeamSection() {
                                                     <h3 className="text-base font-black text-white tracking-tight group-hover:text-brand-purple transition-colors duration-300 truncate">
                                                         {member.name}
                                                     </h3>
-                                                    <span className={`inline-flex items-center gap-1 mt-1 px-2 py-0.5 rounded-md border text-[10px] font-bold tracking-widest uppercase ${meta?.badgeClass}`}>
-                                                        {meta?.icon}
+                                                    <span className={`inline-flex max-w-full items-center gap-1 mt-1 px-2 py-0.5 rounded-md border text-[10px] font-bold tracking-widest uppercase leading-tight whitespace-normal ${meta?.badgeClass}`}>
+                                                        <span className="flex-shrink-0">{meta?.icon}</span>
                                                         {member.role}
                                                     </span>
                                                 </div>
